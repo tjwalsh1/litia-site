@@ -1,0 +1,48 @@
+---
+import Layout from "../components/Layout.astro";
+---
+
+<Layout title="Litia — Privacy-first early literacy" description="On-device eye-tracking literacy activities with text-to-speech. Built for kids, educators, and researchers.">
+  <section class="hero">
+    <div>
+      <h1>Privacy-first early literacy, powered by on-device eye tracking.</h1>
+      <p class="lede">
+        Litia is an iOS learning app that uses the TrueDepth camera for real-time gaze interaction and
+        text-to-speech — processed on device. Built to support early readers, new language learners, and accessibility use cases.
+      </p>
+
+      <div class="ctaRow">
+        <a class="button primary" href={`${Astro.base}/contact`}>Request access</a>
+        <a class="button" href={`${Astro.base}/privacy`}>Read privacy policy</a>
+      </div>
+
+      <div class="cardGrid">
+        <div class="card">
+          <h3>On-device by design</h3>
+          <p>No cloud required. No ads. No data broker nonsense.</p>
+        </div>
+        <div class="card">
+          <h3>Built for classrooms</h3>
+          <p>Simple flows, fast sessions, measurable progress.</p>
+        </div>
+        <div class="card">
+          <h3>Research-friendly</h3>
+          <p>Designed to be evaluated and iterated with academics.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <h3>What it does</h3>
+      <p class="subtle">Current activities:</p>
+      <ul class="subtle">
+        <li>Quiz mode (letters / phonemes / words)</li>
+        <li>Vocabulary gaze pairing</li>
+        <li>Interactive story reading with TTS</li>
+      </ul>
+      <p class="subtle" style="margin-top:12px;">
+        Want a pilot? Use the Contact page.
+      </p>
+    </aside>
+  </section>
+</Layout>
