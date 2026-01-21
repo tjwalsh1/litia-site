@@ -1,0 +1,52 @@
+---
+const { title = "Litia", description = "On-device, privacy-first early literacy activities with eye tracking and text-to-speech." } = Astro.props;
+const path = Astro.url.pathname;
+const isActive = (href) => (path === href ? "active" : "");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href={`${Astro.site}${Astro.base}/favicon.svg`} />
+  </head>
+  <body>
+    <header class="site">
+      <div class="container">
+        <div class="navbar">
+          <a class="brand" href={`${Astro.base}/`}>
+            <span class="badge" aria-hidden="true"></span>
+            <span>Litia</span>
+          </a>
+
+          <nav class="navlinks" aria-label="Primary navigation">
+            <a class={isActive(`${Astro.base}/`)} href={`${Astro.base}/`}>Home</a>
+            <a class={isActive(`${Astro.base}/research`)} href={`${Astro.base}/research`}>Research</a>
+            <a class={isActive(`${Astro.base}/educators`)} href={`${Astro.base}/educators`}>Educators</a>
+            <a class={isActive(`${Astro.base}/privacy`)} href={`${Astro.base}/privacy`}>Privacy</a>
+            <a class={isActive(`${Astro.base}/contact`)} href={`${Astro.base}/contact`}>Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        © {new Date().getFullYear()} Litia. Privacy-first, on-device learning.
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>
