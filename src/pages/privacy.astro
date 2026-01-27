@@ -4,37 +4,119 @@ import Layout from "../components/Layout.astro";
 
 <Layout title="Privacy Policy — Litia">
   <h1 class="pageTitle">Privacy Policy</h1>
-  <p class="subtle">Last updated: January 18, 2026</p>
+  <p class="subtle">Last Updated: January 18, 2026</p>
 
   <div class="prose">
+    <h2>1. Overview</h2>
     <p>
-      Litia is designed to minimize data collection. The app uses the TrueDepth camera for on-device eye tracking and does not store or transmit camera images or video.
+      Litia is an educational application designed for children, families, and educators. We are committed to
+      protecting user privacy and complying with applicable privacy laws, including COPPA (United States), GDPR
+      (European Union), and the UK GDPR / Children’s Code.
+    </p>
+    <p>
+      Litia is designed to function offline by default. Unless explicitly stated in this policy, Litia does not
+      transmit personal information to our servers.
     </p>
 
-    <h2>1. What we collect</h2>
+    <h2>2. Information We Collect</h2>
+    <p>Litia collects minimal information to function:</p>
     <ul>
-      <li><b>On-device learning progress</b> (e.g., activity completion, scores) stored locally.</li>
-      <li><b>Settings</b> (e.g., preferred mode) stored locally.</li>
-      <li><b>No biometrics</b>: we do not store face scans, templates, or raw camera footage.</li>
+      <li>Learning progress and app state (e.g., completed activities, proficiency progress, streaks, settings, in-app currency balance).</li>
+      <li>Visual preferences (e.g., avatar selection, button theme selection).</li>
+      <li>Optional, non-identifying diagnostic information stored locally for troubleshooting (if enabled by an adult).</li>
     </ul>
-
-    <h2>2. Camera usage</h2>
-    <ul>
-      <li>Used for real-time gaze interaction only.</li>
-      <li>Processed on device and discarded.</li>
-      <li>No camera recordings are saved or uploaded.</li>
-    </ul>
-
-    <h2>3. Children’s privacy</h2>
-    <ul>
-      <li>We do not show ads or behavioral tracking.</li>
-      <li>We do not sell personal data.</li>
-      <li>Parents/guardians can request deletion of local data by uninstalling the app.</li>
-    </ul>
-
-    <h2>4. Contact</h2>
     <p>
-      Email: <a href="mailto:support@litia.app">support@litia.app</a>
+      We do not require users to provide a real name, phone number, address, or any other personally identifying
+      information to use the core experience.
+    </p>
+
+    <h2>3. Camera and Eye Tracking</h2>
+    <p>
+      Litia may request access to the device camera for real-time eye tracking. Camera data is processed on-device
+      only for the purpose of detecting gaze direction and enabling hands-free learning interactions.
+    </p>
+    <p>
+      We do not store, save, or transmit camera frames, face images, or video recordings for eye tracking. Camera data
+      is used transiently in memory and discarded immediately after processing.
+    </p>
+
+    <h2>4. Audio and Text-to-Speech</h2>
+    <p>
+      Litia uses iOS text-to-speech to read educational content aloud. Litia does not record or transmit user speech.
+      If microphone permissions are ever requested in a future version, this policy will be updated and the app will
+      clearly explain why it is needed.
+    </p>
+
+    <h2>5. Children’s Privacy (COPPA / UK Children’s Code)</h2>
+    <p>We do not knowingly collect personal information from children.</p>
+    <ul>
+      <li>No advertising identifiers are used.</li>
+      <li>No behavioral tracking or third-party ad SDKs are used.</li>
+      <li>We do not sell personal information.</li>
+      <li>Data is stored on the device and can be deleted by removing the app or resetting its data.</li>
+    </ul>
+    <p>
+      If you believe Litia has collected a child’s personal information unintentionally, contact us and we will work
+      with you to delete any data we can access. In offline mode, data is stored locally on the device and can be
+      deleted directly by the device owner.
+    </p>
+
+    <h2>6. Data Sharing</h2>
+    <p>
+      We do not sell, rent, or share personal information with third parties for advertising.
+    </p>
+    <p>
+      We may share information only if required by law, to protect the safety of users, or to enforce legal rights.
+      Because Litia is offline by default, we generally do not possess server-side user data to share.
+    </p>
+
+    <h2>7. Data Storage and Security</h2>
+    <p>
+      By default, Litia stores data locally on the device. This data is protected by iOS security features (such as
+      the app sandbox and device-level protections).
+    </p>
+    <p>
+      We use reasonable safeguards designed to reduce risk of unauthorized access. No method of storage is 100% secure;
+      however, Litia is designed to minimize data collection and exposure by operating offline.
+    </p>
+
+    <h2>8. International Users (EU/UK)</h2>
+    <p>For users in the EU/UK, the typical legal bases for processing are:</p>
+    <ul>
+      <li>Performance of a contract (providing the app’s functionality),</li>
+      <li>Legitimate interests (improving the learning experience), and/or</li>
+      <li>Consent (where required).</li>
+    </ul>
+    <p>
+      Because Litia stores data on-device by default, international data transfers generally do not occur unless cloud
+      services are enabled in a future version.
+    </p>
+
+    <h2>9. Your Choices and Rights</h2>
+    <p>Depending on jurisdiction, you may have rights to access, delete, or restrict processing of personal information.</p>
+    <p>In offline mode:</p>
+    <ul>
+      <li>You can delete data by deleting the app or resetting the app’s data (where available).</li>
+      <li>If cloud features are added later, we will provide additional access/deletion tools and update this policy.</li>
+    </ul>
+
+    <h2>10. Third-Party Services</h2>
+    <p>
+      Litia uses Apple system frameworks (e.g., AVSpeechSynthesizer, camera APIs) to provide core functionality. We do
+      not integrate third-party advertising SDKs. If we add third-party services (analytics, cloud sync, etc.) in the
+      future, we will update this policy and provide appropriate disclosures and controls.
+    </p>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>
+      We may update this policy from time to time. If we make material changes, we will update the “Last Updated” date
+      and, where appropriate, provide in-app notice.
+    </p>
+
+    <h2>12. Contact</h2>
+    <p>
+      If you have questions or requests about privacy, contact:
+      <a href="mailto:privacy@litia.app">privacy@litia.app</a>
     </p>
   </div>
 </Layout>
