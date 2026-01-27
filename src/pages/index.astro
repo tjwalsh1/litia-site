@@ -2,13 +2,17 @@
 import Layout from "../components/Layout.astro";
 ---
 
-<Layout title="Litia — Privacy-first early literacy" description="On-device eye-tracking literacy activities with text-to-speech. Built for kids, educators, and researchers.">
+<Layout
+  title="Litia — Privacy-first early literacy"
+  description="On-device eye-tracking literacy activities with text-to-speech for early learners across multiple languages."
+>
   <section class="hero">
     <div>
       <h1>Privacy-first early literacy, powered by on-device eye tracking.</h1>
       <p class="lede">
         Litia is an iOS learning app that uses the TrueDepth camera for real-time gaze interaction and
-        text-to-speech — processed on device. Built to support early readers, new language learners, and accessibility use cases.
+        text-to-speech — processed entirely on device. It supports early readers, new language learners,
+        and accessibility use cases across English, Spanish, French, German, Italian, and Portuguese.
       </p>
 
       <div class="ctaRow">
@@ -22,27 +26,40 @@ import Layout from "../components/Layout.astro";
           <p>No cloud required. No ads. No data broker nonsense.</p>
         </div>
         <div class="card">
-          <h3>Built for classrooms</h3>
-          <p>Simple flows, fast sessions, measurable progress.</p>
+          <h3>Multilayered learning</h3>
+          <p>Eye tracking builds neural connections across letters, phonemes, and words.</p>
         </div>
         <div class="card">
-          <h3>Research-friendly</h3>
-          <p>Designed to be evaluated and iterated with academics.</p>
+          <h3>Progress you can trust</h3>
+          <p>Private dashboards for parents, educators, and researchers.</p>
         </div>
       </div>
     </div>
 
     <aside class="card">
       <h3>What it does</h3>
-      <p class="subtle">Current activities:</p>
+      <p class="subtle">Core activities:</p>
       <ul class="subtle">
-        <li>Quiz mode (letters / phonemes / words)</li>
-        <li>Vocabulary gaze pairing</li>
-        <li>Interactive story reading with TTS</li>
+        <li>Quiz mode for letters, phonemes, and words with gaze highlighting.</li>
+        <li>Vocabulary and flashcard exercises with images, speech, and guided pacing.</li>
+        <li>Interactive story reading with streamlined folk tales and fairy tales.</li>
       </ul>
       <p class="subtle" style="margin-top:12px;">
-        Want a pilot? Use the Contact page.
+        Learners earn coins to unlock new drawings, theme colors, and figure icons.
       </p>
     </aside>
+  </section>
+
+  <section style="margin-top: 32px;" class="prose">
+    <h2>How the experience works</h2>
+    <p>
+      Quizzes use eye tracking on iOS devices to identify the letter, phoneme, or word a learner looks at.
+      The app highlights the item, displays an associated image, and speaks the word before the learner selects
+      the matching term for the prompt.
+    </p>
+    <p>
+      Story mode reads along with the learner while they track text on screen, and the vocabulary pathway uses
+      gaze-guided flashcards to build rapid recognition across languages.
+    </p>
   </section>
 </Layout>
