@@ -23,11 +23,11 @@ const isActive = (href) => (path === href ? "active" : "");
           </a>
 
           <nav class="navlinks" aria-label="Primary navigation">
-            <a class={isActive(`${Astro.base}/`)} href={`${Astro.base}/`}>Home</a>
-            <a class={isActive(`${Astro.base}/research`)} href={`${Astro.base}/research`}>Research</a>
-            <a class={isActive(`${Astro.base}/educators`)} href={`${Astro.base}/educators`}>Educators</a>
-            <a class={isActive(`${Astro.base}/privacy`)} href={`${Astro.base}/privacy`}>Privacy</a>
-            <a class={isActive(`${Astro.base}/contact`)} href={`${Astro.base}/contact`}>Contact</a>
+            <nav>
+            <a href="/">Home</a>
+            <a href="/research">Research</a>
+            <a href="/educators">Educators</a>
+            <a href="/contact">Contact</a>
           </nav>
         </div>
       </div>
