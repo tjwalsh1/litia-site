@@ -1,71 +1,106 @@
 :root {
-  --bg: #FFFFFF; 
+  /* Vibrant, friendly baseline */
+  --bg: #FAFAFF; 
   --surface: #FFFFFF;
   --text: #2D3748; 
-  --text-muted: #718096;
+  --border: rgba(0, 0, 0, 0.08);
   
-  --accent-blue: #00C6FF;
+  /* Kid-friendly Accent Colors */
+  --accent: #00C6FF; /* Bright Blue */
+  --accent2: #0072FF; /* Deeper Blue */
   --accent-pink: #FF7EB3;
-  --accent-yellow: #FFD166;
   
-  --radius-playful: 32px;
-  --border-thick: 3px solid rgba(0, 0, 0, 0.08);
+  /* Big, soft curves */
+  --radius: 28px;
   
+  /* Bouncy animation curve */
   --bounce: cubic-bezier(0.34, 1.56, 0.64, 1); 
-  --transition: all 0.4s var(--bounce);
+  --shadow-play: 0 12px 32px -12px rgba(0, 198, 255, 0.15);
 }
 
-.play-card {
-  background: var(--surface);
-  border-radius: var(--radius-playful);
-  padding: 32px;
-  border: var(--border-thick);
-  
-  box-shadow: 0 12px 32px -12px rgba(0, 198, 255, 0.15);
-  transition: var(--transition);
-  
-  opacity: 0;
-  transform: translateY(30px) scale(0.95);
-  animation: popIn 0.6s var(--bounce) forwards;
+/* --- Playful Navbar --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.play-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px -10px rgba(0, 198, 255, 0.3);
-  border-color: var(--accent-blue);
-}
-
-.button.primary {
-  background: linear-gradient(135deg, var(--accent-blue), #0072FF);
-  border-radius: 20px;
-  border: none;
-  padding: 16px 28px;
-  color: white;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
   font-weight: 800;
-  font-size: 1.1rem;
-  box-shadow: 0 8px 0 #0056b3;
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.button.primary:active {
-  transform: translateY(8px);
-  box-shadow: 0 0 0 #0056b3;
+  font-size: 1.5rem;
+  color: var(--text);
 }
 
 .winky-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   transition: transform 0.5s var(--bounce);
 }
 
 .brand:hover .winky-logo {
-  transform: translateY(-6px) rotate(8deg) scale(1.1);
+  transform: translateY(-4px) rotate(10deg) scale(1.1);
 }
 
-@keyframes popIn {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #718096;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* --- Chunky Buttons --- */
+.button.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 20px;
+  border: none;
+  padding: 14px 24px;
+  color: white;
+  font-weight: 800;
+  box-shadow: 0 6px 0 #0056b3; /* 3D bottom edge */
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.button.primary:active {
+  transform: translateY(6px); /* Physically presses down */
+  box-shadow: 0 0 0 #0056b3;
+}
+
+/* --- Upgrading Your Existing Cards --- */
+.cardGrid {
+  margin-top: 32px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  border: 3px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-play);
+  padding: 24px;
+  transition: all 0.4s var(--bounce);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(0, 198, 255, 0.25);
+  border-color: var(--accent);
 }
