@@ -1,27 +1,41 @@
 /* ==========================================================
-   1. CSS Variables & Professional Theme
+   1. CSS Variables & Apple Color Palette
    ========================================================== */
 :root {
-  --bg-app: #F5F5F7; /* Apple's signature light grey background */
-  --surface: #FFFFFF;
-  --text-main: #1D1D1F; /* Apple's off-black */
-  --text-muted: #86868B; 
-  
-  --brand-primary: #007AFF; /* iOS System Blue */
-  --brand-primary-hover: #0056b3;
+  /* Apple System Colors */
+  --apple-blue: #007AFF;
+  --apple-green: #34C759;
+  --apple-indigo: #5856D6;
+  --apple-orange: #FF9500;
+  --apple-pink: #FF2D55;
+  --apple-purple: #AF52DE;
+  --apple-red: #FF3B30;
+  --apple-teal: #5AC8FA;
+  --apple-yellow: #FFCC00;
 
-  /* More structured, professional radii */
-  --radius-card: 16px; 
-  --radius-button: 8px; 
-  --gap-bento: 32px; /* Increased spacing between cards */
+  /* Theme Colors */
+  --brand-primary: var(--apple-blue); /* Main action color */
+  --brand-accent: var(--apple-purple); /* Secondary accent */
   
-  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
-  --transition-smooth: all 0.25s ease;
+  /* Backgrounds & Text */
+  --bg-app: #F2F2F7; /* Slightly warmer Apple light grey */
+  --surface: #FFFFFF;
+  --text-main: #1C1C1E;
+  --text-muted: #8E8E93; 
+  
+  /* Structure */
+  --radius-card: 20px; /* Slightly softer than the "pro" look */
+  --radius-button: 12px; 
+  --gap-bento: 32px;
+  
+  /* Shadows */
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+  --shadow-hover: 0 16px 40px rgba(0, 122, 255, 0.12), 0 8px 16px rgba(0, 0, 0, 0.04); /* Blue tint on hover */
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* ==========================================================
-   2. Reset & iOS Native Typography
+   2. Reset & Typography
    ========================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
@@ -29,19 +43,20 @@ body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
 body {
   background-color: var(--bg-app);
   color: var(--text-main);
-  /* The exact stack to match Xcode's .font(.system) */
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* This stack ensures the native system font is used on Mac/iOS */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--brand-primary); text-decoration: none; transition: var(--transition-smooth); }
+a { color: var(--brand-primary); text-decoration: none; transition: var(--transition-smooth); font-weight: 600; }
+a:hover { color: var(--brand-accent); }
 img { max-width: 100%; display: block; }
 
 .container {
-  max-width: 1040px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 32px; /* Increased side padding */
+  padding: 0 32px;
 }
 
 /* ==========================================================
@@ -51,44 +66,42 @@ img { max-width: 100%; display: block; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(180%) blur(20px); /* Apple's frosted glass */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px; /* Slightly taller for breathing room */
+  height: 72px;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 600;
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
   color: var(--text-main);
 }
 
 .winky-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.navlinks {
-  display: flex;
-  gap: 32px; /* Increased spacing between links */
-}
+.navlinks { display: flex; gap: 32px; }
 
 .navlinks a {
   color: var(--text-main);
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .navlinks a:hover, .navlinks a.active {
@@ -96,89 +109,100 @@ img { max-width: 100%; display: block; }
 }
 
 /* ==========================================================
-   4. Structured Buttons
+   4. Colorful Buttons
    ========================================================== */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: var(--surface);
-  color: var(--text-main);
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 12px 24px;
+  color: var(--brand-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
   border-radius: var(--radius-button);
-  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .button.primary {
   background: var(--brand-primary);
+  background: linear-gradient(135deg, var(--apple-blue), var(--apple-indigo)); /* Colorful gradient */
   color: white;
   border: none;
+  box-shadow: 0 8px 20px -4px rgba(0, 122, 255, 0.4);
 }
 
-.button:hover { background: #F9F9FB; }
-.button.primary:hover { background: var(--brand-primary-hover); }
+.button:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+.button.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -4px rgba(88, 86, 214, 0.5); }
 
 /* ==========================================================
-   5. Bento Grid & Typography Layout
+   5. Layout & Cards
    ========================================================== */
-main { padding: 80px 0 120px; } /* Massive spacing for a professional feel */
+main { padding: 80px 0 120px; }
 
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Wider cards */
   gap: var(--gap-bento);
-  margin-top: 48px; /* Increased spacing above grids */
+  margin-top: 56px;
 }
 
 .card {
   background: var(--surface);
   border-radius: var(--radius-card);
-  padding: 40px; /* Highly spacious cards */
+  padding: 40px;
   box-shadow: var(--shadow-card);
   transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Add a subtle colorful top border to cards for pop */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(to right, var(--apple-blue), var(--apple-purple));
+  opacity: 0.7;
+}
+/* Vary the colors for fun */
+.card:nth-child(2n)::before { background: linear-gradient(to right, var(--apple-orange), var(--apple-pink)); }
+.card:nth-child(3n)::before { background: linear-gradient(to right, var(--apple-green), var(--apple-teal)); }
+
 
 .card:hover {
   box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.01);
 }
 
-.card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
+.card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; }
+.card p { color: var(--text-muted); font-size: 1.05rem; }
 
-.card p {
-  color: var(--text-muted);
-}
-
-h1.pageTitle { font-size: 3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; }
-.prose { padding-top: 24px; }
-.prose h2 { font-size: 1.5rem; font-weight: 600; margin: 40px 0 16px; }
-.prose p { margin-bottom: 24px; color: var(--text-main); font-size: 1.05rem; }
-.prose ul { padding-left: 24px; margin-bottom: 32px; color: var(--text-main); font-size: 1.05rem; }
+h1.pageTitle { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 24px; color: var(--text-main); }
+.prose { padding-top: 32px; }
+.prose h2 { font-size: 1.8rem; font-weight: 700; margin: 48px 0 24px; color: var(--brand-primary); }
+.prose p, .prose ul { margin-bottom: 24px; color: var(--text-main); font-size: 1.15rem; line-height: 1.7; }
 
 /* ==========================================================
    6. Footer
    ========================================================== */
 .site-footer {
-  padding: 48px 0;
+  padding: 64px 0;
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.9rem;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.95rem;
   background: var(--surface);
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
 
 .footer-links {
-  margin-top: 16px;
+  margin-top: 24px;
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 32px;
 }
+.footer-links a { color: var(--text-muted); }
+.footer-links a:hover { color: var(--brand-primary); }
