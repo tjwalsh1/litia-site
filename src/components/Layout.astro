@@ -4,12 +4,19 @@ const {
   description = "On-device, privacy-first early literacy activities with eye tracking and text-to-speech." 
 } = Astro.props;
 
-// Uses simple relative paths for clean routing
+// 1. Get the base URL (e.g., "/litia-site/") automatically from your config
+const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 
-const isActive = (href) => {
-  if (href === '/' && currentPath === '/') return "active";
-  if (href !== '/' && currentPath.includes(href)) return "active";
+// 2. Helper to check if a link is active, accounting for the base path
+const isActive = (path) => {
+  // Normalize paths to ensure they match (handle trailing slashes)
+  const normalize = (p) => p.endsWith('/') ? p : p + '/';
+  const current = normalize(currentPath);
+  const target = normalize(base + path);
+  
+  if (path === '' && current === normalize(base)) return "active";
+  if (path !== '' && current.includes(path)) return "active";
   return "";
 };
 ---
@@ -22,22 +29,22 @@ const isActive = (href) => {
     <meta name="description" content={description} />
     <title>{title}</title>
     
-    <link rel="icon" type="image/png" href="/Winky.png" />
+    <link rel="icon" type="image/png" href={`${base}Winky.png`} />
   </head>
   <body>
     <header class="site-header">
       <div class="container">
         <div class="navbar">
-          <a class="brand" href="/">
-            <img src="/Winky.png" alt="Litia Logo" class="winky-logo" />
+          <a class="brand" href={base}>
+            <img src={`${base}Winky.png`} alt="Litia Logo" class="winky-logo" />
             <span>Litia</span>
           </a>
 
           <nav class="navlinks" aria-label="Primary navigation">
-            <a href="/" class={isActive('/litia-site')}>Home</a>
-            <a href="/research" class={isActive('/litia-site/research')}>Research</a>
-            <a href="/educators" class={isActive('/litia-site/educators')}>Educators</a>
-            <a href="/contact" class={isActive('/litia-site/contact')}>Contact</a>
+            <a href={base} class={isActive('')}>Home</a>
+            <a href={`${base}research/`} class={isActive('research')}>Research</a>
+            <a href={`${base}educators/`} class={isActive('educators')}>Educators</a>
+            <a href={`${base}contact/`} class={isActive('contact')}>Contact</a>
           </nav>
         </div>
       </div>
@@ -53,8 +60,8 @@ const isActive = (href) => {
       <div class="container">
         <p>© {new Date().getFullYear()} Litia. Privacy-first, on-device learning.</p>
         <div class="footer-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/contact">Contact</a>
+          <a href={`${base}privacy/`}>Privacy Policy</a>
+          <a href={`${base}contact/`}>Contact</a>
         </div>
       </div>
     </footer>
