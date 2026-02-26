@@ -4,14 +4,12 @@ const {
   description = "On-device, privacy-first early literacy activities with eye tracking and text-to-speech." 
 } = Astro.props;
 
-// This ensures paths work perfectly on GitHub Pages
-const baseUrl = import.meta.env.BASE_URL;
+// Uses simple relative paths for clean routing
 const currentPath = Astro.url.pathname;
 
-// Helper to highlight the active navigation link
 const isActive = (href) => {
-  if (href === baseUrl && currentPath === baseUrl) return "active";
-  if (href !== baseUrl && currentPath.includes(href)) return "active";
+  if (href === '/' && currentPath === '/') return "active";
+  if (href !== '/' && currentPath.includes(href)) return "active";
   return "";
 };
 ---
@@ -24,22 +22,22 @@ const isActive = (href) => {
     <meta name="description" content={description} />
     <title>{title}</title>
     
-    <link rel="icon" type="image/png" href={`${baseUrl}Winky.png`} />
+    <link rel="icon" type="image/png" href="/Winky.png" />
   </head>
   <body>
     <header class="site-header">
       <div class="container">
         <div class="navbar">
-          <a class="brand" href={baseUrl}>
-            <img src={`${baseUrl}Winky.png`} alt="Winky Logo" class="winky-logo" />
+          <a class="brand" href="/">
+            <img src="/Winky.png" alt="Litia Logo" class="winky-logo" />
             <span>Litia</span>
           </a>
 
           <nav class="navlinks" aria-label="Primary navigation">
-            <a href={baseUrl} class={isActive(baseUrl)}>Home</a>
-            <a href={`${baseUrl}research`} class={isActive(`${baseUrl}research`)}>Research</a>
-            <a href={`${baseUrl}educators`} class={isActive(`${baseUrl}educators`)}>Educators</a>
-            <a href={`${baseUrl}contact`} class={isActive(`${baseUrl}contact`)}>Contact</a>
+            <a href="/" class={isActive('/')}>Home</a>
+            <a href="/research" class={isActive('/research')}>Research</a>
+            <a href="/educators" class={isActive('/educators')}>Educators</a>
+            <a href="/contact" class={isActive('/contact')}>Contact</a>
           </nav>
         </div>
       </div>
@@ -54,6 +52,10 @@ const isActive = (href) => {
     <footer class="site-footer">
       <div class="container">
         <p>© {new Date().getFullYear()} Litia. Privacy-first, on-device learning.</p>
+        <div class="footer-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/contact">Contact</a>
+        </div>
       </div>
     </footer>
   </body>
