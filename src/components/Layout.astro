@@ -7,44 +7,29 @@ const isActive = (href) => (path === href ? "active" : "");
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
-    <link rel="icon" href={`${Astro.site}${Astro.base}/favicon.svg`} />
-  </head>
-  <body>
-    <header class="site">
-      <div class="container">
-        <div class="navbar">
-          <a class="brand" href={`${Astro.base}/`}>
-            <span class="badge" aria-hidden="true"></span>
-            <span>Litia</span>
-          </a>
-
-          <nav class="navlinks" aria-label="Primary navigation">
-            <nav>
-            <a href="/">Home</a>
-            <a href="/research">Research</a>
-            <a href="/educators">Educators</a>
-            <a href="/contact">Contact</a>
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <div class="container">
-        <slot />
-      </div>
-    </main>
-
-    <footer>
-      <div class="container">
-        © {new Date().getFullYear()} Litia. Privacy-first, on-device learning.
-      </div>
-    </footer>
-  </body>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title}</title>
+  <link rel="icon" type="image/png" href="/Winky.png" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="brand">
+      <img src="/Winky.png" alt="Winky Logo" class="winky-logo" />
+      <span class="brand-text">Litia</span>
+    </a>
+    
+    <div class="nav-links">
+      <a href="/educators">Educators</a>
+      <a href="/research">Research</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </nav>
+  
+  <main>
+    <slot />
+  </main>
+</body>
 </html>
 
 <style is:global>
