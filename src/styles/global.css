@@ -52,6 +52,17 @@
   box-shadow: 0 0 0 #0056b3;
 }
 
+.winky-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  transition: transform 0.5s var(--bounce);
+}
+
+.brand:hover .winky-logo {
+  transform: translateY(-6px) rotate(8deg) scale(1.1);
+}
+
 @keyframes popIn {
   to {
     opacity: 1;
