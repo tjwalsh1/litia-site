@@ -1,24 +1,20 @@
 ---
-const { 
-  title = "Litia", 
-  description = "On-device, privacy-first early literacy activities with eye tracking and text-to-speech." 
-} = Astro.props;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 
-// 1. Get the base URL (e.g., "/litia-site/") automatically from your config
-const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 
-// 2. Helper to check if a link is active, accounting for the base path
 const isActive = (path) => {
-  // Normalize paths to ensure they match (handle trailing slashes)
   const normalize = (p) => p.endsWith('/') ? p : p + '/';
   const current = normalize(currentPath);
   const target = normalize(base + path);
   
-  if (path === '' && current === normalize(base)) return "active";
-  if (path !== '' && current.includes(path)) return "active";
+  if (path === '/' && current === normalize(base + '/')) return "active";
+  if (path !== '/' && current.includes(path)) return "active";
   return "";
 };
+
+const { title = "Litia", description = "On-device, privacy-first early literacy." } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,23 +24,22 @@ const isActive = (path) => {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    
-    <link rel="icon" type="image/png" href={`${base}Winky.png`} />
+    <link rel="icon" type="image/png" href={`${base}/Winky.png`} />
   </head>
   <body>
     <header class="site-header">
       <div class="container">
         <div class="navbar">
-          <a class="brand" href={base}>
-            <img src={`${base}Winky.png`} alt="Litia Logo" class="winky-logo" />
+          <a class="brand" href={`${base}/`}>
+            <img src={`${base}/Winky.png`} alt="Litia Logo" class="winky-logo" />
             <span>Litia</span>
           </a>
 
-          <nav class="navlinks" aria-label="Primary navigation">
-            <a href={base} class={isActive('')}>Home</a>
-            <a href={`${base}research/`} class={isActive('research')}>Research</a>
-            <a href={`${base}educators/`} class={isActive('educators')}>Educators</a>
-            <a href={`${base}contact/`} class={isActive('contact')}>Contact</a>
+          <nav class="navlinks">
+            <a href={`${base}/`} class={isActive('/')}>Home</a>
+            <a href={`${base}/research/`} class={isActive('/research/')}>Research</a>
+            <a href={`${base}/educators/`} class={isActive('/educators/')}>Educators</a>
+            <a href={`${base}/contact/`} class={isActive('/contact/')}>Contact</a>
           </nav>
         </div>
       </div>
@@ -60,8 +55,8 @@ const isActive = (path) => {
       <div class="container">
         <p>© {new Date().getFullYear()} Litia. Privacy-first, on-device learning.</p>
         <div class="footer-links">
-          <a href={`${base}privacy/`}>Privacy Policy</a>
-          <a href={`${base}contact/`}>Contact</a>
+          <a href={`${base}/privacy/`}>Privacy Policy</a>
+          <a href={`${base}/contact/`}>Contact</a>
         </div>
       </div>
     </footer>
