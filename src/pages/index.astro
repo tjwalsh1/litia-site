@@ -29,13 +29,13 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 
     /* --- THE MAGIC SCROLL SECTION --- */
     .scroll-magic-section {
-      height: 300vh; /* Makes the user scroll 3 screen-heights to get through the 3 images */
+      height: 300vh; 
       position: relative;
       margin-top: 40px;
     }
     .scroll-sticky-viewport {
       position: sticky;
-      top: 10vh; /* Centers the active image on screen */
+      top: 10vh; 
       height: 80vh;
       overflow: hidden;
       display: flex;
@@ -44,18 +44,20 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     }
     .scroll-horizontal-track {
       display: flex;
-      width: 300%; /* 3 images = 300% width */
+      /* THIS IS YOUR NEW CONTROL DIAL: Change this number to bring them closer or further apart */
+      gap: 40px; 
+      width: max-content; 
+      /* This perfectly centers the first and last card on your screen */
+      padding: 0 calc(50vw - 140px); 
       will-change: transform;
-      /* Add a tiny smooth delay to the scroll snapping */
       transition: transform 0.15s ease-out; 
     }
     .scroll-slide {
-      width: 33.3333%; /* Each slide takes exactly 1 screen width */
+      width: 280px; /* Locks the exact width of the card */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 20px;
     }
   </style>
 
@@ -170,7 +172,6 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Fade-in on scroll logic for the colored blocks
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -182,28 +183,21 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
       const hiddenElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
       hiddenElements.forEach((el) => observer.observe(el));
 
-      // 2. Horizontal Scroll Magic Logic
       const scroller = document.getElementById('screenshot-scroller');
       const track = document.getElementById('scroll-track');
 
       if (scroller && track) {
         window.addEventListener('scroll', () => {
           const rect = scroller.getBoundingClientRect();
-          
-          // Calculate how far down the user has scrolled within the 300vh section
-          // Rect.top is 0 when the section hits the top of the viewport.
           const scrollProgress = -rect.top / (rect.height - window.innerHeight);
-          
-          // Clamp the progress between 0 (start) and 1 (end)
           const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
           
-          // Move the track left based on scroll progress. 
-          // Since there are 3 items (300% width), we max out at sliding left by -66.666%
-          const translateX = clampedProgress * -66.666;
+          // Calculate the exact pixel distance to move the track
+          const maxScroll = track.scrollWidth - window.innerWidth;
+          const translateX = clampedProgress * -maxScroll;
           
-          track.style.transform = `translateX(${translateX}%)`;
+          track.style.transform = `translateX(${translateX}px)`;
         });
       }
     });
   </script>
-</Layout>
