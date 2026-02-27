@@ -1,135 +1,132 @@
 ---
 import Layout from "../components/Layout.astro";
+
+// Hardcoded base to guarantee images load on GitHub Pages
+const imageBase = '/litia-site'; 
+const base = import.meta.env.BASE_URL;
 ---
 
-<Layout
-  title="Litia — The future of learning"
-  description="Litia reads, counts, and writes along with learners like nothing ever seen before."
->
+<Layout title="Litia — The future of learning">
   <style>
-    /* Bouncy entrance animation when the page loads */
-    .animate-pop {
-      opacity: 0;
-      transform: translateY(40px) scale(0.9);
-      animation: popIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-    /* Stagger the animations so they load one after another */
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-
-    @keyframes popIn {
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* Edge-to-edge image card styling */
-    .screenshot-card {
-      padding: 0; /* Removes padding so the image touches the borders */
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+    /* Image Card Styles */
+    .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+    .screenshot-img-wrapper { overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .screenshot-img { width: 100%; height: auto; display: block; transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .screenshot-card:hover .screenshot-img { transform: scale(1.08) rotate(-2deg); }
+    .screenshot-caption { padding: 20px; font-weight: 600; text-align: center; color: var(--text-main); }
     
-    .screenshot-img-wrapper {
-      overflow: hidden; /* Keeps the zooming image inside the curved borders */
-      border-bottom: 2px solid var(--border);
-    }
+    /* Layout Helpers */
+    .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 32px; flex-wrap: wrap; }
+    .pricing-tier { border-top: 4px solid var(--apple-blue); }
     
-    .screenshot-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Privacy Shield Badge */
+    .privacy-shield {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(52, 199, 89, 0.1); /* Soft Apple Green */
+      border: 1px solid rgba(52, 199, 89, 0.3);
+      padding: 16px 20px;
+      border-radius: 16px;
+      max-width: 600px;
+      margin-bottom: 64px;
     }
-    
-    .screenshot-card:hover .screenshot-img {
-      transform: scale(1.08) rotate(-3deg); 
-    }
-    
-    .screenshot-caption {
-      padding: 16px;
-      font-weight: 800;
-      text-align: center;
-      color: var(--text);
-      background: var(--surface);
-    }
+    .privacy-shield svg { flex-shrink: 0; margin-top: 2px; }
+    .privacy-shield p { font-size: 0.95rem; color: var(--text-main); line-height: 1.4; margin: 0; }
+    .privacy-shield strong { color: #248A3D; /* Darker green for contrast */ }
   </style>
 
-  <section class="hero">
+  <section class="hero" style="padding-top: 40px;">
     <div>
-      <h1>Litia is the future of learning.</h1>
+      <h1 class="grand-title">Litia is the future of learning.</h1>
+      
       <p class="lede">
-        Litia reads, counts, writes, and more along with learners as they build
-        literacy and mathematical skills.
+        Litia reads, counts, writes, and learns alongside your child. Powered by on-device eye tracking, it builds foundational literacy and mathematical skills.
       </p>
 
-      <div class="ctaRow">
-        <a class="button primary" href={`${Astro.base || ''}/contact`}>Request a demo</a>
-        <a class="button" href={`${Astro.base || ''}/educators`}>Learn more</a>
+      <div class="hero-buttons">
+        <a class="button primary" href={`${base}contact/`} style="padding: 16px 32px; font-size: 1.1rem;">Request a demo</a>
+        <a class="button" href={`${base}educators/`} style="padding: 16px 32px; font-size: 1.1rem;">For Educators</a>
+        
+        <a class="app-store-badge" href="#" title="Coming soon to the App Store">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91 1.65.17 2.79.81 3.45 1.77-2.82 1.63-2.34 4.96.48 6.08-.66 1.7-1.36 3.4-2.14 4.81zM15.11 4.77c.66-.8 1.12-1.92.99-3.05-1.03.04-2.26.68-2.95 1.5-.6.71-1.15 1.86-.98 2.96 1.15.09 2.28-.61 2.94-1.41z"/></svg>
+          Coming Soon
+        </a>
       </div>
 
-      <div class="cardGrid">
-        <div class="card">
-          <h3>Real technology to teach real skills</h3>
-          <p>No ads. No AI or LLMs stealing your data. No cloud storage required. No personal information is retained or sold!</p>
-        </div>
-        <div class="card">
-          <h3>Multilayered learning</h3>
-          <p>Eye tracking builds neural connections across letters, phonemes, words, and mathematics. Reading, writing, and basic calculations are taught.</p>
-        </div>
-        <div class="card">
-          <h3>Progress you can trust</h3>
-          <p>Progress dashboards and datasets are available for adults and educators displaying information about their students' success.</p>
-        </div>
-        <div class="card">
-          <h3>What it does</h3>
-          <p>Litia gives students quizzes for literacy and arithmetic development, vocabulary flashcards, and interactive reading.</p>
-        </div>
+      <div class="privacy-shield">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <p>
+          <strong>100% On-Device Privacy.</strong> We require an email address to set up your subscription account—that's it. Absolutely zero student learning data or eye-tracking metrics ever leave your device.
+        </p>
       </div>
     </div>
-    <p></p>
   </section>
 
-  <section style="margin-top: 64px;">
-    <h2>Inside the App</h2>
-    <p class="subtle" style="margin-bottom: 24px;">Take a peek at how Litia makes foundational learning fun.</p>
+  <section>
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Inside the App</h2>
+    <p class="subtle" style="margin-bottom: 40px; font-size: 1.1rem;">Interactive learning at a glance</p>
     
     <div class="cardGrid">
-      <div class="card screenshot-card animate-pop delay-1">
+      <div class="card screenshot-card">
         <div class="screenshot-img-wrapper">
-          <img src="/home-screen.png" alt="Litia Home Screen" class="screenshot-img" />
+          <img src={`${imageBase}/home-screen.jpg`} alt="Litia Home Screen" class="screenshot-img" />
         </div>
         <div class="screenshot-caption">Guided Pathways</div>
       </div>
 
-      <div class="card screenshot-card animate-pop delay-2">
+      <div class="card screenshot-card">
         <div class="screenshot-img-wrapper">
-          <img src="/quiz-screen.png" alt="Litia Quiz Interaction" class="screenshot-img" />
+          <img src={`${imageBase}/quiz-screen.jpg`} alt="Litia Quiz Interaction" class="screenshot-img" />
         </div>
         <div class="screenshot-caption">Eye-Tracked Quizzes</div>
       </div>
 
-      <div class="card screenshot-card animate-pop delay-3">
+      <div class="card screenshot-card">
         <div class="screenshot-img-wrapper">
-          <img src="/drawing-screen.png" alt="Litia Creative Drawing" class="screenshot-img" />
+          <img src={`${imageBase}/drawing-screen.jpg`} alt="Litia Creative Drawing" class="screenshot-img" />
         </div>
         <div class="screenshot-caption">Creative Rewards</div>
       </div>
     </div>
   </section>
 
-  <section style="margin-top: 64px;" class="prose">
-    <h2>How the experience works</h2>
-    <p>
-      Quizzes use eye tracking on iOS devices to identify the letter, phoneme,
-      or word a learner looks at. The app highlights the item, displays an
-      associated image, and speaks the word before the learner selects the
-      matching term for the prompt.
-    </p>
-    <p>
-      Story mode reads along with the learner while they track text on screen,
-      and the vocabulary pathway uses gaze-guided flashcards to build rapid
-      recognition across languages.
-    </p>
+  <section style="margin-top: 100px;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Core Features</h2>
+    <p class="subtle" style="margin-bottom: 24px; font-size: 1.1rem;">Swipe to explore the technology</p>
+    
+    <div class="horizontal-scroll-track">
+      <div class="card">
+        <h3>Real technology to teach real skills</h3>
+        <p>No ads. No AI stealing data. No cloud storage required. No personal information is retained or sold.</p>
+      </div>
+      <div class="card">
+        <h3>Multilayered learning</h3>
+        <p>Eye tracking builds neural connections across letters, phonemes, and words. Reading and math taught interactively.</p>
+      </div>
+      <div class="card">
+        <h3>Progress you can trust</h3>
+        <p>Secure progress dashboards are available for adults and educators displaying rich data about student success.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 100px;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Simple, Transparent Access</h2>
+    <p class="subtle" style="font-size: 1.1rem; margin-bottom: 40px;">No hidden fees, no data selling.</p>
+    
+    <div class="cardGrid">
+      <div class="card">
+        <h3>Families & Individuals</h3>
+        <p>A simple, low-cost monthly subscription provides full access to all reading, writing, and math modules for your child. Cancel anytime.</p>
+      </div>
+      <div class="card pricing-tier">
+        <h3>Schools & Educators</h3>
+        <p>Bulk licensing available for classrooms. Access aggregated progress dashboards and secure, offline-capable deployments for your district.</p>
+        <a href={`${base}contact/`} class="button" style="margin-top: 24px;">Contact Sales</a>
+      </div>
+    </div>
   </section>
 </Layout>
