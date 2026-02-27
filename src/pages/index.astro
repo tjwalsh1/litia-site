@@ -9,9 +9,9 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 <Layout title="Litia — The future of learning">
   <style>
     /* Image Card Styles */
-    .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; width: 100%; max-width: 340px; }
+    .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; width: 100%; max-width: 260px; }
     .screenshot-img-wrapper { overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .screenshot-img { width: 100%; height: auto; display: block; }
+    .screenshot-img { width: 100%; max-height: 60vh; object-fit: contain; display: block; }
     .screenshot-caption { padding: 20px; font-weight: 700; text-align: center; color: var(--text-main); font-size: 1.2rem; }
     
     /* Layout Helpers */
