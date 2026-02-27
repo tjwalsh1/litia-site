@@ -1,16 +1,15 @@
+/* ==========================================================
+   1. Apple System Colors (FLAT)
+   ========================================================== */
 :root {
   --apple-blue: #007AFF;
   --apple-green: #34C759;
-  --apple-indigo: #5856D6;
   --apple-orange: #FF9500;
-  --apple-pink: #FF2D55;
   --apple-purple: #AF52DE;
   --apple-red: #FF3B30;
   --apple-teal: #5AC8FA;
-  --apple-yellow: #FFCC00;
+  --apple-gray: #8E8E93;
 
-  --brand-primary: var(--apple-blue);
-  --brand-hover: #0056b3; 
   --text-main: #1C1C1E;
   --text-muted: #6C6C70;
   --bg-app: #F5F5F7;
@@ -20,33 +19,34 @@
   --radius-button: 12px;
   --gap-bento: 32px;
   
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 16px 40px rgba(0, 122, 255, 0.12), 0 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.08);
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* ==========================================================
+   2. Reset & Typography
+   ========================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
 
 body {
   background-color: var(--bg-app);
   color: var(--text-main);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 img { max-width: 100%; display: block; }
-a { color: var(--brand-primary); text-decoration: none; font-weight: 600; transition: var(--transition); }
+a { color: var(--apple-blue); text-decoration: none; font-weight: 600; transition: var(--transition); }
 a:hover { color: var(--apple-purple); }
 
-.container { 
-  max-width: 1080px; 
-  margin: 0 auto; 
-  padding: 0 32px; 
-}
+.container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
 
+/* ==========================================================
+   3. Navbar
+   ========================================================== */
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255, 255, 255, 0.85);
@@ -54,134 +54,80 @@ a:hover { color: var(--apple-purple); }
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
-
 .navbar { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.2rem; color: var(--text-main); }
 .brand:hover { text-decoration: none; }
-
-.winky-logo {
-  width: 36px; height: 36px; border-radius: 8px;
-  transition: transform 0.6s var(--bounce);
-}
-.brand:hover .winky-logo {
-  transform: scale(1.15) rotate(-8deg);
-}
-
+.winky-logo { width: 36px; height: 36px; border-radius: 8px; transition: transform 0.6s var(--transition); }
+.brand:hover .winky-logo { transform: scale(1.15) rotate(-8deg); }
 .navlinks { display: flex; gap: 32px; }
 .navlinks a { color: var(--text-main); font-size: 1rem; }
-.navlinks a.active { color: var(--brand-primary); font-weight: 700; }
+.navlinks a.active { color: var(--apple-blue); font-weight: 700; }
 
+/* ==========================================================
+   4. Flat Buttons
+   ========================================================== */
 .button {
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--surface); color: var(--brand-primary);
+  background: var(--surface); color: var(--apple-blue);
   font-weight: 700; font-size: 1rem; padding: 12px 24px;
-  border-radius: var(--radius-button); box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: var(--radius-button); box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   transition: var(--transition);
 }
-.button:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+.button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
 
-.button.primary { 
-  background: linear-gradient(135deg, var(--apple-blue), var(--apple-indigo)); 
-  color: white; border: none; 
-  box-shadow: 0 8px 20px -4px rgba(0, 122, 255, 0.4); 
-}
-.button.primary:hover { 
-  transform: translateY(-2px); 
-  box-shadow: 0 12px 24px -4px rgba(88, 86, 214, 0.5); 
-}
+/* FLAT COLOR BUTTON */
+.button.primary { background: var(--apple-blue); color: white; border: none; }
+.button.primary:hover { background: #0056b3; }
 
-.app-store-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: black; color: white; padding: 12px 24px;
-  border-radius: 12px; font-weight: 600; text-decoration: none;
-  transition: transform 0.2s var(--bounce);
-}
-.app-store-badge:hover { transform: scale(1.05); text-decoration: none; color: white; }
-
+/* ==========================================================
+   5. Flat Colored Cards
+   ========================================================== */
 main { padding: 80px 0 120px; }
 
-.cardGrid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: var(--gap-bento); 
-  margin-top: 48px; 
-}
+.cardGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap-bento); margin-top: 48px; }
+
+/* Stacked Layout for "One block at a time" */
+.stackedGrid { display: flex; flex-direction: column; gap: 24px; margin-top: 48px; }
 
 .card {
   background: var(--surface); border-radius: var(--radius-card);
   padding: 40px; box-shadow: var(--shadow-card);
   transition: var(--transition);
-  position: relative; overflow: hidden;
 }
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+.card p { font-size: 1.1rem; line-height: 1.5; }
 
-.card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-  background: linear-gradient(to right, var(--apple-blue), var(--apple-purple));
-}
-.card:nth-child(2n)::before { background: linear-gradient(to right, var(--apple-orange), var(--apple-pink)); }
-.card:nth-child(3n)::before { background: linear-gradient(to right, var(--apple-green), var(--apple-teal)); }
+/* SOLID COLOR UTILITY CLASSES */
+.bg-blue { background-color: var(--apple-blue); color: white; }
+.bg-orange { background-color: var(--apple-orange); color: white; }
+.bg-green { background-color: var(--apple-green); color: white; }
+.bg-purple { background-color: var(--apple-purple); color: white; }
+.bg-red { background-color: var(--apple-red); color: white; }
 
-.card:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-hover); }
-.card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main); letter-spacing: -0.01em; }
-.card p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.5; }
+/* Force text inside colored blocks to be white */
+.card[class*="bg-"] h3, .card[class*="bg-"] p { color: white; }
 
-.pageTitle { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 24px; color: var(--text-main); max-width: 800px; }
-.lede { font-size: 1.3rem; color: var(--text-muted); font-weight: 500; max-width: 700px; margin-bottom: 40px; line-height: 1.5; }
+/* ==========================================================
+   6. SCROLL ANIMATION CLASSES
+   ========================================================== */
+/* Initial hidden states */
+.reveal-left { opacity: 0; transform: translateX(-80px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.reveal-right { opacity: 0; transform: translateX(80px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.reveal-up { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+
+/* The visible state triggered by JavaScript */
+.reveal-visible { opacity: 1; transform: translate(0); }
+
+/* ==========================================================
+   7. Typography & Footer
+   ========================================================== */
+.grand-title { font-size: 5rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 24px; color: var(--text-main); }
+@media (max-width: 768px) { .grand-title { font-size: 3.5rem; } }
+.lede { font-size: 1.3rem; color: var(--text-muted); font-weight: 500; max-width: 700px; margin-bottom: 40px; }
 .subtle { font-size: 1rem; color: var(--apple-gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
-.prose { margin-top: 40px; max-width: 720px; }
-.prose h2 { font-size: 1.8rem; margin-top: 48px; margin-bottom: 16px; font-weight: 700; color: var(--apple-blue); }
-.prose p, .prose ul { margin-bottom: 24px; color: var(--text-main); font-size: 1.15rem; }
-.prose ul { padding-left: 20px; }
-
-.site-footer { background: var(--surface); border-top: 1px solid rgba(0,0,0,0.05); padding: 48px 0; text-align: center; font-size: 0.95rem; color: var(--apple-gray); }
+.site-footer { background: var(--surface); border-top: 1px solid rgba(0,0,0,0.05); padding: 48px 0; text-align: center; color: var(--apple-gray); }
 .footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 32px; }
 .footer-links a { color: var(--apple-gray); }
-.footer-links a:hover { color: var(--brand-primary); }
-
-.grand-title {
-  font-size: 5.5rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin-bottom: 24px;
-  /* Massive Apple-style gradient text */
-  background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple), var(--apple-pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  /* Subtle entrance animation */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s forwards;
-}
-
-@media (max-width: 768px) {
-  .grand-title { font-size: 3.5rem; }
-}
-
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.horizontal-scroll-track {
-  display: flex;
-  gap: var(--gap-bento);
-  overflow-x: auto;
-  padding-bottom: 32px; /* Breathing room for the cards */
-  padding-top: 16px;
-  /* Snaps the cards neatly into place as you scroll */
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  /* Hide the ugly scrollbar but keep the functionality */
-  scrollbar-width: none; 
-  -ms-overflow-style: none;
-}
-.horizontal-scroll-track::-webkit-scrollbar { display: none; }
-
-.horizontal-scroll-track .card {
-  min-width: 340px; /* Forces them to stay wide so they scroll */
-  flex: 0 0 auto;
-  scroll-snap-align: start; /* Snaps to the left edge */
-}
+.footer-links a:hover { color: var(--apple-blue); }
