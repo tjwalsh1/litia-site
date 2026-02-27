@@ -1,20 +1,23 @@
 ---
 import Layout from "../components/Layout.astro";
 
+// Exact same logic used in Layout.astro for Winky
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 ---
 
 <Layout title="Litia — The future of learning">
   <style>
-    .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+    /* Image Card Styles */
+    .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; width: 100%; max-width: 340px; }
     .screenshot-img-wrapper { overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .screenshot-img { width: 100%; height: auto; display: block; transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .screenshot-card:hover .screenshot-img { transform: scale(1.05); }
-    .screenshot-caption { padding: 20px; font-weight: 700; text-align: center; color: var(--text-main); }
+    .screenshot-img { width: 100%; height: auto; display: block; }
+    .screenshot-caption { padding: 20px; font-weight: 700; text-align: center; color: var(--text-main); font-size: 1.2rem; }
     
+    /* Layout Helpers */
     .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 32px; flex-wrap: wrap; }
     
+    /* Privacy Shield Badge */
     .privacy-shield {
       display: inline-flex; align-items: flex-start; gap: 12px;
       background: #F5F5F7; border: 1px solid rgba(0,0,0,0.1);
@@ -23,11 +26,42 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     .privacy-shield svg { flex-shrink: 0; margin-top: 2px; }
     .privacy-shield p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
     .privacy-shield strong { color: var(--text-main); }
+
+    /* --- THE MAGIC SCROLL SECTION --- */
+    .scroll-magic-section {
+      height: 300vh; /* Makes the user scroll 3 screen-heights to get through the 3 images */
+      position: relative;
+      margin-top: 40px;
+    }
+    .scroll-sticky-viewport {
+      position: sticky;
+      top: 10vh; /* Centers the active image on screen */
+      height: 80vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .scroll-horizontal-track {
+      display: flex;
+      width: 300%; /* 3 images = 300% width */
+      will-change: transform;
+      /* Add a tiny smooth delay to the scroll snapping */
+      transition: transform 0.15s ease-out; 
+    }
+    .scroll-slide {
+      width: 33.3333%; /* Each slide takes exactly 1 screen width */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+    }
   </style>
 
   <section class="hero" style="padding-top: 40px;">
     <div>
-      <h1 class="grand-title">Litia is the future of learning.</h1>
+      <h1 class="grand-title" style="color: var(--apple-blue);">Litia is the future of learning.</h1>
       
       <p class="lede">
         Litia reads, counts, writes, and learns alongside your child. Powered by on-device eye tracking, it builds foundational literacy and mathematical skills.
@@ -49,39 +83,47 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     </div>
   </section>
 
-  <section style="margin-top: 40px;">
+  <div style="text-align: center; margin-top: 60px;">
     <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Inside the App</h2>
-    <p class="subtle" style="margin-bottom: 40px;">Interactive learning at a glance</p>
-    
-    <div class="cardGrid">
-      <div class="card screenshot-card reveal-up">
-        <div class="screenshot-img-wrapper">
-          <img src={`${base}/home-screen.png`} alt="Litia Home Screen" class="screenshot-img" />
+    <p class="subtle">Scroll down to explore</p>
+  </div>
+
+  <section class="scroll-magic-section" id="screenshot-scroller">
+    <div class="scroll-sticky-viewport">
+      <div class="scroll-horizontal-track" id="scroll-track">
+        
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/home-screen.jpg`} alt="Litia Home Screen" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Guided Pathways</div>
+          </div>
         </div>
-        <div class="screenshot-caption">Guided Pathways</div>
-      </div>
-      <div class="card screenshot-card reveal-up" style="transition-delay: 0.1s;">
-        <div class="screenshot-img-wrapper">
-          <img src={`${base}/quiz-screen.png`} alt="Litia Quiz Interaction" class="screenshot-img" />
+
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/quiz-screen.jpg`} alt="Litia Quiz Interaction" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Eye-Tracked Quizzes</div>
+          </div>
         </div>
-        <div class="screenshot-caption">Eye-Tracked Quizzes</div>
-      </div>
-      <div class="card screenshot-card reveal-up" style="transition-delay: 0.2s;">
-        <div class="screenshot-img-wrapper">
-          <img src={`${base}/writing-screen.png`} alt="Litia Creative Drawing" class="screenshot-img" />
+
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/drawing-screen.jpg`} alt="Litia Creative Drawing" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Creative Rewards</div>
+          </div>
         </div>
-        <div class="screenshot-caption">Writing Motor Skills</div>
-      </div>
-      <div class="card screenshot-card reveal-up" style="transition-delay: 0.2s;">
-        <div class="screenshot-img-wrapper">
-          <img src={`${base}/drawing-screen.png`} alt="Litia Creative Drawing" class="screenshot-img" />
-        </div>
-        <div class="screenshot-caption">Creative Rewards</div>
+
       </div>
     </div>
   </section>
 
-  <section style="margin-top: 100px;">
+  <section style="margin-top: 60px;">
     <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Core Features</h2>
     
     <div class="stackedGrid">
@@ -121,16 +163,40 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // 1. Fade-in on scroll logic for the colored blocks
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('reveal-visible');
           }
         });
-      }, { threshold: 0.15 }); // Triggers when 15% of the card is visible
+      }, { threshold: 0.15 });
 
       const hiddenElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
       hiddenElements.forEach((el) => observer.observe(el));
+
+      // 2. Horizontal Scroll Magic Logic
+      const scroller = document.getElementById('screenshot-scroller');
+      const track = document.getElementById('scroll-track');
+
+      if (scroller && track) {
+        window.addEventListener('scroll', () => {
+          const rect = scroller.getBoundingClientRect();
+          
+          // Calculate how far down the user has scrolled within the 300vh section
+          // Rect.top is 0 when the section hits the top of the viewport.
+          const scrollProgress = -rect.top / (rect.height - window.innerHeight);
+          
+          // Clamp the progress between 0 (start) and 1 (end)
+          const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+          
+          // Move the track left based on scroll progress. 
+          // Since there are 3 items (300% width), we max out at sliding left by -66.666%
+          const translateX = clampedProgress * -66.666;
+          
+          track.style.transform = `translateX(${translateX}%)`;
+        });
+      }
     });
   </script>
 </Layout>
