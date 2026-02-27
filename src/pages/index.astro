@@ -64,29 +64,14 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
   <section class="hero" style="padding-top: 40px;">
     <div>
       <h1 class="grand-title" style="color: var(--apple-blue);">Litia is the future of learning.</h1>
-      
       <p class="lede">
-        Litia reads, counts, writes, and learns alongside your child. Powered by on-device eye tracking, it builds foundational literacy and mathematical skills.
+        Using eye tracking and writing analysis programs, Litia builds foundational reading, arithmetic, and writing skills necessary for academic success like no other tool ever created.
       </p>
-
-      <div class="hero-buttons">
-        <a class="button primary" href={`${base}/contact/`} style="padding: 16px 32px; font-size: 1.1rem;">Request a demo</a>
-        <a class="button" href={`${base}/educators/`} style="padding: 16px 32px; font-size: 1.1rem;">For Educators</a>
-      </div>
-
-      <div class="privacy-shield">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--apple-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-        <p>
-          <strong>100% On-Device Privacy.</strong> We only need an email to set up your account. Absolutely zero student learning data or eye-tracking metrics ever leave your device.
-        </p>
-      </div>
     </div>
   </section>
 
   <div style="text-align: center; margin-top: 60px;">
-    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Inside the App</h2>
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;; color: var(--apple-green);">The Litia Platform</h2>
     <p class="subtle">Scroll down to explore</p>
   </div>
 
@@ -138,19 +123,25 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     <div class="stackedGrid">
       <div class="card bg-blue reveal-left">
         <h3>Real technology to teach real skills</h3>
-        <p>No ads. No AI stealing data. No cloud storage required. No personal information is retained or sold. We built a tool, not a data harvester.</p>
+        <p>No ads. No AI stealing your data. No personal information is retained or sold. We built a learning tool that teaches the next generation, not a data harvester.</p>
       </div>
       
       <div class="card bg-red reveal-right">
         <h3>Multilayered learning</h3>
-        <p>Eye tracking builds neural connections across letters, phonemes, and words. Reading and math are taught interactively through gaze-contingent design.</p>
+        <p>Eye tracking builds neural connections across letters, phonemes, and words. Reading and math are taught interactively through gaze-contingent programs to teach students how to analyze new symbols, letters, and words.</p>
       </div>
       
       <div class="card bg-green reveal-left">
-        <h3>Progress you can trust</h3>
-        <p>Secure progress dashboards are available for adults and educators, displaying rich, actionable data about a student's reading trajectory.</p>
+        <h3>Progress you can see</h3>
+        <p>Secure progress dashboards are available for adults and educators, displaying rich, actionable data about a student's educational trajectory.</p>
       </div>
     </div>
+  </section>
+  <section>
+      <div class="hero-buttons">
+        <a class="button primary" href={`${base}/contact/`} style="padding: 16px 32px; font-size: 1.1rem;">Learn More</a>
+        <a class="button" href={`${base}/educators/`} style="padding: 16px 32px; font-size: 1.1rem;">Made For Learning</a>
+      </div>
   </section>
 
   <section style="margin-top: 100px;">
@@ -165,13 +156,21 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
       <div class="card bg-purple reveal-up"; style="transition-delay: 0.1s;">
         <h3>Schools & Educators</h3>
         <p>Bulk licensing available for classrooms. Access aggregated progress dashboards and secure, offline-capable deployments for your school.</p>
-        <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Contact Sales</a>
+        <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Learn about Litia in the classroom</a>
       </div>
       <div class="card bg-cyan reveal-up"; style="transition-delay: 0.2s;">
         <h3>Guest Access</h3>
         <p>Try Litia at no cost as a guest. Progress data, profiles, and growth are not saved between sessions.</p>
       </div>
     </div>
+    <div class="privacy-shield">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--apple-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <p>
+          <strong>100% On-Device Privacy.</strong> We only need an email to set up your account. Absolutely zero student learning data or eye-tracking metrics ever leave your device.
+        </p>
+      </div>
   </section>
 
   <script>
