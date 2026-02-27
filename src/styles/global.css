@@ -9,6 +9,7 @@
   --apple-red: #FF3B30;
   --apple-teal: #5AC8FA;
   --apple-gray: #8E8E93;
+  --apple-cyan: #00c0e8;
 
   --text-main: #1C1C1E;
   --text-muted: #6C6C70;
@@ -104,6 +105,7 @@ main { padding: 80px 0 120px; }
 .bg-green { background-color: var(--apple-green); color: white; }
 .bg-purple { background-color: var(--apple-purple); color: white; }
 .bg-red { background-color: var(--apple-red); color: white; }
+.bg-cyan { background-color: var(--apple-cyan); color: white; }
 
 /* Force text inside colored blocks to be white */
 .card[class*="bg-"] h3, .card[class*="bg-"] p { color: white; }
