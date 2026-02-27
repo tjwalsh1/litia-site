@@ -141,7 +141,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
         <p>No ads. No AI stealing data. No cloud storage required. No personal information is retained or sold. We built a tool, not a data harvester.</p>
       </div>
       
-      <div class="card bg-orange reveal-right">
+      <div class="card bg-red reveal-right">
         <h3>Multilayered learning</h3>
         <p>Eye tracking builds neural connections across letters, phonemes, and words. Reading and math are taught interactively through gaze-contingent design.</p>
       </div>
@@ -158,14 +158,18 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     <p class="subtle" style="margin-bottom: 40px;">No hidden fees.</p>
     
     <div class="cardGrid">
-      <div class="card reveal-up">
+      <div class="card bg-orange reveal-up">
         <h3>Families & Individuals</h3>
         <p>A simple, low-cost monthly subscription provides full access to all reading, writing, and math modules for your child. Cancel anytime.</p>
       </div>
-      <div class="card reveal-up" style="transition-delay: 0.1s; border-top: 4px solid var(--apple-blue);">
+      <div class="card bg-purple reveal-up"; style="transition-delay: 0.1s;">
         <h3>Schools & Educators</h3>
-        <p>Bulk licensing available for classrooms. Access aggregated progress dashboards and secure, offline-capable deployments for your district.</p>
+        <p>Bulk licensing available for classrooms. Access aggregated progress dashboards and secure, offline-capable deployments for your school.</p>
         <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Contact Sales</a>
+      </div>
+      <div class="card bg-cyan reveal-up"; style="transition-delay: 0.2s;">
+        <h3>Guest Access</h3>
+        <p>Try Litia at no cost as a guest. Progress data, profiles, and growth are not saved between sessions.</p>
       </div>
     </div>
   </section>
