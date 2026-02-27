@@ -133,3 +133,77 @@ main { padding: 80px 0 120px; }
 .footer-links { margin-top: 24px; display: flex; justify-content: center; gap: 32px; }
 .footer-links a { color: var(--apple-gray); }
 .footer-links a:hover { color: var(--apple-blue); }
+
+/* ==========================================================
+   8. MOBILE BENTO NAVIGATION & RESPONSIVE TWEAKS
+   ========================================================== */
+.mobile-toggle {
+  display: none;
+  background: var(--bg-app);
+  border: 1px solid rgba(0,0,0,0.05);
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 12px; /* iOS icon shape */
+  transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+  /* Give the whole site breathing room on small screens */
+  .container { padding: 0 20px; }
+  main { padding: 40px 0 80px; }
+  
+  /* Shrink the massive title slightly for phones */
+  .grand-title { font-size: 3rem; }
+
+  /* Show the hamburger button */
+  .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+  .mobile-toggle:active { transform: scale(0.95); background: #E5E5EA; }
+  
+  /* The Floating Bento Menu */
+  .navlinks {
+    display: none; 
+    position: absolute;
+    top: 88px; /* Detached from the header to float */
+    left: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-radius: var(--radius-card); /* Big bento curves */
+    padding: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.05);
+    flex-direction: column;
+    gap: 8px; /* Space between the buttons */
+    z-index: 200;
+  }
+  
+  /* Smooth pop-in animation */
+  .navlinks.nav-open {
+    display: flex;
+    animation: bentoPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  
+  /* Chunky, tap-friendly inner buttons */
+  .navlinks a {
+    font-size: 1.1rem;
+    padding: 14px 20px;
+    background: var(--bg-app); /* Light Apple Gray */
+    border-radius: 12px;
+    text-align: left;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  
+  /* Active state turns flat Apple Blue */
+  .navlinks a:hover, .navlinks a.active {
+    background: var(--apple-blue);
+    color: white;
+  }
+}
+
+@keyframes bentoPop {
+  0% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
