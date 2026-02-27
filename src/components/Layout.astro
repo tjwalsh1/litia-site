@@ -35,7 +35,15 @@ const { title = "Litia", description = "On-device, privacy-first early literacy.
             <span>Litia</span>
           </a>
 
-          <nav class="navlinks">
+          <button id="mobile-menu-btn" class="mobile-toggle" aria-label="Toggle navigation">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <nav id="nav-menu" class="navlinks">
             <a href={`${base}/research/`} class={isActive('/research/')}>Research</a>
             <a href={`${base}/educators/`} class={isActive('/educators/')}>Educators</a>
             <a href={`${base}/contact/`} class={isActive('/contact/')}>Contact</a>
@@ -60,6 +68,19 @@ const { title = "Litia", description = "On-device, privacy-first early literacy.
         </div>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (menuBtn && navMenu) {
+          menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-open');
+          });
+        }
+      });
+    </script>
   </body>
 </html>
 
