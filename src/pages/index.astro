@@ -1,23 +1,52 @@
 ---
 import Layout from "../components/Layout.astro";
 
-// Exact same logic used in Layout.astro for Winky
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 ---
 
-<Layout title="Litia — The future of learning">
+<Layout title="Litia - The future of learning">
   <style>
-    /* Image Card Styles */
     .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; width: 100%; max-width: 260px; }
     .screenshot-img-wrapper { overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
     .screenshot-img { width: 100%; max-height: 60vh; object-fit: contain; display: block; }
     .screenshot-caption { padding: 20px; font-weight: 700; text-align: center; color: var(--text-main); font-size: 1.2rem; }
     
-    /* Layout Helpers */
-    .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 32px; flex-wrap: wrap; }
-    
-    /* Privacy Shield Badge */
+    .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+    .hero-split {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      padding-top: 40px;
+    }
+    @media (min-width: 800px) {
+      .hero-split {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+      }
+      .hero-content {
+        flex: 1;
+        max-width: 55%;
+      }
+      .hero-visual {
+        flex: 1;
+        max-width: 45%;
+      }
+    }
+    .micro-copy {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-photo {
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-hover);
+      width: 100%;
+      object-fit: cover;
+    }
+
     .privacy-shield {
       display: inline-flex; align-items: flex-start; gap: 12px;
       background: #F5F5F7; border: 1px solid rgba(0,0,0,0.1);
@@ -31,7 +60,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     .scroll-magic-section {
       height: 300vh; 
       position: relative;
-      margin-top: 40px;
+      margin-top: 80px;
     }
     .scroll-sticky-viewport {
       position: sticky;
@@ -45,7 +74,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     .scroll-horizontal-track {
       display: flex;
       /* THIS IS YOUR NEW CONTROL DIAL: Change this number to bring them closer or further apart */
-      gap: 40px; 
+      gap: 30px; 
       width: max-content; 
       /* This perfectly centers the first and last card on your screen */
       padding: 0 calc(50vw - 140px); 
@@ -61,12 +90,20 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     }
   </style>
 
-  <section class="hero" style="padding-top: 40px;">
-    <div>
+  <section class="hero hero-split">
+    <div class="hero-content">
       <h1 class="grand-title" style="color: var(--apple-blue);">Litia is the future of learning.</h1>
       <p class="lede">
-        Using eye tracking and writing analysis programs, Litia builds foundational reading, arithmetic, and writing skills necessary for academic success like no other tool ever created.
+        Litia builds foundational reading, writing, and math skills through technological magic! By reading along with learners' eyes, Litia builds pattern recognition for new readers.
       </p>
+      <div class="hero-buttons">
+        <a href={`${base}/download/`} class="button primary">Try Litia for free</a>
+        <a href={`${base}/educators/`} class="button" style="background: transparent; border: 1px solid var(--apple-gray); color: var(--text-main);">I'm a Teacher</a>
+      </div>
+      <p class="micro-copy">No credit card required. 100% on-device privacy.</p>
+    </div>
+    <div class="hero-visual reveal-right">
+      <img src={`${base}/hero-classroom.jpg`} alt="A smiling elementary learner actively collaborating with a teacher using the Litia app on an iPad" class="hero-photo" />
     </div>
   </section>
   <div style="text-align: center; margin-top: 200px;">
@@ -94,6 +131,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
             <div class="screenshot-caption">Eye-Tracked Quizzes</div>
           </div>
         </div>
+
         <div class="scroll-slide">
           <div class="card screenshot-card">
             <div class="screenshot-img-wrapper">
@@ -102,6 +140,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
             <div class="screenshot-caption">Learning to Write</div>
           </div>
         </div>
+
         <div class="scroll-slide">
           <div class="card screenshot-card">
             <div class="screenshot-img-wrapper">
@@ -110,28 +149,27 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
             <div class="screenshot-caption">Space to Create</div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <section style="margin-top: 60px;">
-    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Core Features</h2>
+  <section style="margin-top: 40px; text-align: center;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;">Litia's Magic Recipe</h2>
     
     <div class="stackedGrid">
       <div class="card bg-blue reveal-left">
-        <h3>Real technology to teach real skills</h3>
-        <p>No ads. No AI stealing your data. No personal information is retained or sold. We have built a learning tool that teaches the next generation, not a data harvester.</p>
+        <h3>Real technology teaches real skills</h3>
+        <p>No ads, even for free guest users. No AI LLMs stealing your data. No personal information is retained or sold. We have built a learning tool that teaches the next generation, not a data harvester.</p>
       </div>
       
       <div class="card bg-red reveal-right">
-        <h3>Multilayered learning</h3>
-        <p>Eye tracking builds neural connections across letters, phonemes, and words. Reading and math are taught interactively through gaze-contingent programs to teach students how to analyze new symbols, letters, and words.</p>
+        <h3>Learning at all stages</h3>
+        <p>Eye tracking builds neural connections across letters, phonemes, and words. Reading and math are taught interactively through gaze-contingent programs to teach learners how to identify new symbols, letters, and words.</p>
       </div>
       
       <div class="card bg-green reveal-left">
         <h3>Progress you can see</h3>
-        <p>Secure progress dashboards are available for adults and educators, displaying rich, actionable data about a student's educational trajectory.</p>
+        <p>Secure progress dashboards are available for adults and educators, displaying actionable data about a learner's educational trajectory without compromising privacy.</p>
       </div>
     </div>
   </section>
@@ -143,16 +181,16 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     <div class="cardGrid">
       <div class="card bg-orange reveal-up">
         <h3>Families & Individuals</h3>
-        <p>A simple, low-cost monthly subscription provides full access to all reading, writing, and math modules for your child. Cancel anytime.</p>
+        <p>A simple, low-cost monthly subscription provides full access to all reading, writing, and math modules for your learner. Cancel anytime.</p>
       </div>
       <div class="card bg-purple reveal-up"; style="transition-delay: 0.1s;">
         <h3>Schools & Educators</h3>
-        <p>Bulk licensing available for classrooms. Access aggregated progress dashboards and secure, offline-capable deployments for your school.</p>
+        <p>Bulk licensing available for classrooms. Access aggregated progress dashboards and secure, offline-capable deployments for your institution.</p>
         <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Learn about Litia in the classroom</a>
       </div>
       <div class="card bg-cyan reveal-up"; style="transition-delay: 0.2s;">
         <h3>Guest Access</h3>
-        <p>Try Litia at no cost as a guest. Progress data, profiles, and growth are not saved between sessions.</p>
+        <p>Try Litia at no cost as a guest. Progress data, profiles, and growth are not saved between sessions, but all features are currently available to guest users.</p>
       </div>
     </div>
   </section>
@@ -162,7 +200,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
         </svg>
         <p>
-          <strong>100% On-Device Privacy.</strong> We only need an email to set up your account. Absolutely zero student learning data or eye-tracking metrics ever leave your device.
+          <strong>Your data belongs to you.</strong> We only need an email to set up your account. Absolutely zero user learning data or eye-tracking metrics ever leaves your account.
         </p>
       </div>
   </section>
