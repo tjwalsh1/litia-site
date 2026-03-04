@@ -1,34 +1,224 @@
 ---
 import Layout from "../components/Layout.astro";
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 ---
 
-<Layout title="Research — Litia">
-  <h1 class="pageTitle">Research &amp; academic partners</h1>
-  <p class="subtle">Litia is designed to be evaluated alongside educators, clinicians, and learning scientists.</p>
+<Layout title="Research - Litia">
+  <style>
+    .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; width: 100%; max-width: 260px; }
+    .screenshot-img-wrapper { overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .screenshot-img { width: 100%; max-height: 60vh; object-fit: contain; display: block; }
+    .screenshot-caption { padding: 20px; font-weight: 700; text-align: center; color: var(--text-main); font-size: 1.2rem; }
+    
+    .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+    .hero-split {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      padding-top: 40px;
+    }
+    @media (min-width: 800px) {
+      .hero-split {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+      }
+      .hero-content {
+        flex: 1;
+        max-width: 55%;
+      }
+      .hero-visual {
+        flex: 1;
+        max-width: 45%;
+      }
+    }
+    .micro-copy {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-photo {
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-hover);
+      width: 100%;
+      object-fit: cover;
+    }
 
-  <div class="prose">
-    <h2>Why researchers work with Litia</h2>
-    <ul>
-      <li>On-device eye tracking provides hands-free insights into early literacy behavior.</li>
-      <li>Activities are structured across letters, phonemes, and word-level comprehension.</li>
-      <li>Multilingual coverage: English, Spanish, French, German, Italian, and Portuguese.</li>
-    </ul>
+    .privacy-shield {
+      display: inline-flex; align-items: flex-start; gap: 12px;
+      background: #F5F5F7; border: 1px solid rgba(0,0,0,0.1);
+      padding: 16px 20px; border-radius: 16px; max-width: 600px; margin-bottom: 64px;
+    }
+    .privacy-shield svg { flex-shrink: 0; margin-top: 2px; }
+    .privacy-shield p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
+    .privacy-shield strong { color: var(--text-main); }
 
-    <h2>Data access, ethics, and privacy</h2>
-    <ul>
-      <li>Local-first data storage with parent/guardian controls.</li>
-      <li>Private settings for downloading learning reports when enabled.</li>
-      <li>Clear consent workflows for any future cloud-enabled studies.</li>
-    </ul>
+    /* --- THE MAGIC SCROLL SECTION --- */
+    .scroll-magic-section {
+      height: 300vh; 
+      position: relative;
+      margin-top: 80px;
+    }
+    .scroll-sticky-viewport {
+      position: sticky;
+      top: 10vh; 
+      height: 80vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .scroll-horizontal-track {
+      display: flex;
+      /* THIS IS YOUR NEW CONTROL DIAL: Change this number to bring them closer or further apart */
+      gap: 30px; 
+      width: max-content; 
+      /* This perfectly centers the first and last card on your screen */
+      padding: 0 calc(50vw - 140px); 
+      will-change: transform;
+      transition: transform 0.15s ease-out; 
+    }
+    .scroll-slide {
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 
-    <h2>Study collaboration</h2>
-    <p>
-      We welcome pilots, classroom studies, and longitudinal research. Share your study goals and we will align
-      instrumentation, curriculum pacing, and reporting.
-    </p>
-
-    <p>
-      Reach out via the <a href={`${Astro.base}/contact`}>contact page</a> to coordinate.
-    </p>
+  <section class="hero hero-split">
+    <div class="hero-content">
+      <h1 class="grand-title" style="color: var(--apple-purple);">A capable platform for research</h1>
+      <p class="lede">
+        Litia provides a platform for researchers to study learning processes and form new understandings of early literacy and mathematical skill acquisition.
+      </p>
+      <p class="micro-copy">Data is private and secure. Student progress reports are only available to the researcher associated with their account.</p>
+    </div>
+    <div class="hero-visual reveal-right">
+      <img src={`${base}/litia-research.png`} alt="A researcher analyzing learning data" class="hero-photo" />
+    </div>
+  </section>
+  <div style="text-align: center; margin-top: 200px;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--apple-orange);">Made for Research</h2>
+    <p class="subtle">Scroll down to explore</p>
   </div>
-</Layout>
+  <section class="scroll-magic-section" id="screenshot-scroller">
+    <div class="scroll-sticky-viewport">
+      <div class="scroll-horizontal-track" id="scroll-track">
+        
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/analytics-screen.png`} alt="In-App Learning Metrics" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">In-App Learning Metrics</div>
+          </div>
+        </div>
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/quiz-screen.png`} alt="Interactive Eye-Tracking Quizzes" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Interactive Eye-Tracking Quizzes</div>
+          </div>
+        </div>
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/information-export-screen.png`} alt="Litia Progress Data Export" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Data Exportable For Analysis</div>
+          </div>
+        </div>
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/writing-screen.png`} alt="Development of Writing Skills" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Development of Writing Motor Skills</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="margin-top: 40px; text-align: center;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--apple-purple);">What We Provide</h2>    
+    <div class="stackedGrid">
+      <div class="card bg-red reveal-left">
+        <h3>No AI slop or privacy intrusions</h3>
+        <p>Litia is proud to use on-device offline software in helping students learn more effectively. Litia does the work of reaching and aiding students, not a large language model prone to errors and hallucinations.</p>
+      </div>
+      <div class="card bg-green reveal-right">
+        <h3>Information you can use</h3>
+        <p>Litia shows user proficiency over time, accuracy on quizzes, and frequency of learning on the app. Additional data may be exported to a spreadsheet format. Litia does not store or distribute user data.</p>
+      </div>
+      <div class="card bg-blue reveal-left">
+        <h3>Innovative Methods of Learning</h3>
+        <p>Litia allows researchers to explore the outer reaches of consumer-grade technological hardware as it applies to early learning processes. Litia provides a look for researchers into the most capable eye-tracking learning platform currently available on consumer-grade iOS devices.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 40px; text-align: center;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--apple-cyan);">Here to Help Researchers</h2>
+    <p class="subtle" style="margin-bottom: 40px;">We are here to serve the needs of your research.</p>
+    
+    <div class="cardGrid">
+      <div class="card bg-purple reveal-up">
+        <h3>Researchers</h3>
+        <p>Try Litia for free on your own personal device to learn about our software. If you have feedback or want to connect us with your administration, please reach out!</p>
+        <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Try Litia on your personal device by downloading on the App Store</a>
+      </div>
+      <div class="card bg-orange reveal-up"; style="transition-delay: 0.1s;">
+        <h3>Administrators</h3>
+        <p>We are happy to discuss pricing, user information, security measures, and institutional research/data privacy policy compliance.</p>
+        <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Contact us for additional information or partnership inquiries</a>
+      </div>
+    </div>
+  </section>
+  <section style="margin-top: 100px; align: center;">
+    <div class="privacy-shield">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--apple-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <p>
+          <strong>Your data belongs to you.</strong> We only need an email to set up your account. Absolutely zero user learning data or eye-tracking metrics ever leave your account.
+        </p>
+      </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      const hiddenElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
+      hiddenElements.forEach((el) => observer.observe(el));
+
+      const scroller = document.getElementById('screenshot-scroller');
+      const track = document.getElementById('scroll-track');
+
+      if (scroller && track) {
+        window.addEventListener('scroll', () => {
+          const rect = scroller.getBoundingClientRect();
+          const scrollProgress = -rect.top / (rect.height - window.innerHeight);
+          const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+          
+          // Calculate the exact pixel distance to move the track
+          const maxScroll = track.scrollWidth - window.innerWidth;
+          const translateX = clampedProgress * -maxScroll;
+          
+          track.style.transform = `translateX(${translateX}px)`;
+        });
+      }
+    });
+  </script>
+
