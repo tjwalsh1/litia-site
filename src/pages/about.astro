@@ -1,0 +1,212 @@
+---
+import Layout from "../components/Layout.astro";
+
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+---
+
+<Layout title="About - Litia">
+  <style>
+    .screenshot-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; width: 100%; max-width: 260px; }
+    .screenshot-img-wrapper { overflow: hidden; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .screenshot-img { width: 100%; max-height: 60vh; object-fit: contain; display: block; }
+    .screenshot-caption { padding: 20px; font-weight: 700; text-align: center; color: var(--text-main); font-size: 1.2rem; }
+    
+    .hero-buttons { display: flex; gap: 16px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+    .hero-split {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      padding-top: 40px;
+    }
+    @media (min-width: 800px) {
+      .hero-split {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+      }
+      .hero-content {
+        flex: 1;
+        max-width: 55%;
+      }
+      .hero-visual {
+        flex: 1;
+        max-width: 45%;
+      }
+    }
+    .micro-copy {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-photo {
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-hover);
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .privacy-shield {
+      display: inline-flex; align-items: flex-start; gap: 12px;
+      background: #F5F5F7; border: 1px solid rgba(0,0,0,0.1);
+      padding: 16px 20px; border-radius: 16px; max-width: 600px; margin-bottom: 64px;
+    }
+    .privacy-shield svg { flex-shrink: 0; margin-top: 2px; }
+    .privacy-shield p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
+    .privacy-shield strong { color: var(--text-main); }
+
+    /* --- THE MAGIC SCROLL SECTION --- */
+    .scroll-magic-section {
+      height: 300vh; 
+      position: relative;
+      margin-top: 80px;
+    }
+    .scroll-sticky-viewport {
+      position: sticky;
+      top: 10vh; 
+      height: 80vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .scroll-horizontal-track {
+      display: flex;
+      /* THIS IS YOUR NEW CONTROL DIAL: Change this number to bring them closer or further apart */
+      gap: 30px; 
+      width: max-content; 
+      /* This perfectly centers the first and last card on your screen */
+      padding: 0 calc(50vw - 140px); 
+      will-change: transform;
+      transition: transform 0.15s ease-out; 
+    }
+    .scroll-slide {
+      width: 280px; /* Locks the exact width of the card */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+
+  <section class="hero hero-split">
+    <div class="hero-content">
+      <h1 class="grand-title" style="color: var(--apple-red);">We built Litia to bring learning into the future.</h1>
+      <p class="lede">
+        Thomas Walsh launched Litia as a law student at Northwestern University based off his experiences as a substitute teacher in rural Alabama.
+      </p>
+    </div>
+    <div class="hero-visual reveal-right">
+      <img src={`${base}/thomas-smiling.png`} alt="Thomas smiling for a photo" class="hero-photo" />
+    </div>
+  </section>
+  <br>
+  <section class="hero hero-split">
+    <div class="hero-content">
+      <p class="lede">
+        Thomas created Litia after his Pin Intelligence project, an award-winning adaptive standardized exam prep tool that he had developed as an undergraduate student at The University of Alabama. 
+      </p>
+    </div>
+    <div class="hero-visual reveal-right">
+      <img src={`${base}/thomas-presenting.png`} alt="Thomas presenting to a crowd" class="hero-photo" />
+    </div>
+  </section>
+  <br>
+  <section class="hero hero-split">
+    <div class="hero-content">
+      <p class="lede">
+        After lengthy discussions with educators and prospective investors, Thomas sought to create a "blue ocean" tool that would aid an underserved niche within education, rather than being just another standardized test prep tool.
+      </p>
+    </div>
+    <div class="hero-visual reveal-right">
+      <img src={`${base}/thomas-smiling.png`} alt="blue ocean" class="hero-photo" />
+    </div>
+  </section>
+
+  <section style="margin-top: 40px; text-align: center;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--apple-blue);">Litia's Objectives</h2>
+    <div class="stackedGrid">
+      <div class="card bg-purple reveal-left">
+        <h3>Improve Learning Outcomes</h3>
+        <p>
+          Litia was inspired by a desire to help students develop pattern recognition skills and symbolic meanings necessary to read or perform basic arithmetic. Litia aims to help students learn these skills regardless of whether they have a parent or guardian leaning over their shoulder and helping them learn.
+        </p>
+      </div>
+      <div class="card bg-orange reveal-right">
+        <h3>Encourage Learning</h3>
+        <p>
+          Litia aims to make the difficult process of learning how to read, write, and perform arithmetic more engaging for young learners in the digital age through interactivity. Moreover, Litia provides learners with opportunities to create art or personalize their profiles as rewards for learning.
+        </p>
+      </div>
+      <div class="card bg-green reveal-left">
+        <h3>Teach Multilingual Literacy</h3>
+        <p>
+          Though this is not available now, we aim to create opportunities in the near future for learners of all ages looking to learn literacy skills in a range of languages. The stories, literacy quizzes, math quizzes, vocabulary exercises, and user interfaces will be available in a multitude of languages.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 40px; text-align: center;">
+    <h2 style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--apple-blue);">Different Ways to Learn</h2>
+    <p class="subtle" style="margin-bottom: 40px;">No hidden fees and no advertising.</p>
+    
+    <div class="cardGrid">
+      <div class="card bg-orange reveal-up">
+        <h3>Families & Individuals</h3>
+        <p>A simple, low-cost monthly subscription provides full access to all reading, writing, and math modules for your learner. Cancel anytime.</p>
+      </div>
+      <div class="card bg-purple reveal-up"; style="transition-delay: 0.1s;">
+        <h3>Schools & Educators</h3>
+        <p>Bulk licensing available for classrooms. Access aggregated progress dashboards and secure, offline-capable deployments for your institution.</p>
+        <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Learn about Litia in the classroom</a>
+      </div>
+      <div class="card bg-cyan reveal-up"; style="transition-delay: 0.2s;">
+        <h3>Guest Access</h3>
+        <p>Try Litia at no cost as a guest. Progress data, profiles, and growth are not saved between sessions, but all features are currently available to guest users.</p>
+      </div>
+    </div>
+  </section>
+  <section style="margin-top: 100px; align: center;">
+    <div class="privacy-shield">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--apple-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <p>
+          <strong>Your data belongs to you.</strong> We only need an email to set up your account. Absolutely zero user learning data or eye-tracking metrics ever leaves your account.
+        </p>
+      </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      const hiddenElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
+      hiddenElements.forEach((el) => observer.observe(el));
+
+      const scroller = document.getElementById('screenshot-scroller');
+      const track = document.getElementById('scroll-track');
+
+      if (scroller && track) {
+        window.addEventListener('scroll', () => {
+          const rect = scroller.getBoundingClientRect();
+          const scrollProgress = -rect.top / (rect.height - window.innerHeight);
+          const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+          
+          // Calculate the exact pixel distance to move the track
+          const maxScroll = track.scrollWidth - window.innerWidth;
+          const translateX = clampedProgress * -maxScroll;
+          
+          track.style.transform = `translateX(${translateX}px)`;
+        });
+      }
+    });
+  </script>
