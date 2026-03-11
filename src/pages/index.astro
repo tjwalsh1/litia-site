@@ -56,7 +56,6 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     .privacy-shield p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
     .privacy-shield strong { color: var(--text-main); }
 
-    /* --- THE MAGIC SCROLL SECTION --- */
     .scroll-magic-section {
       height: 300vh; 
       position: relative;
@@ -73,16 +72,15 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     }
     .scroll-horizontal-track {
       display: flex;
-      /* THIS IS YOUR NEW CONTROL DIAL: Change this number to bring them closer or further apart */
+      /* Change this number to bring them closer or further apart */
       gap: 30px; 
       width: max-content; 
-      /* This perfectly centers the first and last card on your screen */
       padding: 0 calc(50vw - 140px); 
       will-change: transform;
       transition: transform 0.15s ease-out; 
     }
     .scroll-slide {
-      width: 280px; /* Locks the exact width of the card */
+      width: 280px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -94,7 +92,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
     <div class="hero-content">
       <h1 class="grand-title" style="color: var(--apple-blue);">Litia is the future of learning.</h1>
       <p class="lede">
-        Litia builds foundational reading, writing, and math skills through technological magic! By reading along with learners' eyes, Litia builds pattern recognition for new readers.
+        Litia teaches builds the readers, writers, and mathematicians of the future by supplementing educators through technology! By reading along with learners' eyes, Litia builds pattern recognition for new readers.
       </p>
       <div class="hero-buttons">
         <a href={`${base}/download/`} class="button bg-green">Learn with Litia for free</a>
@@ -104,7 +102,7 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
       <p class="micro-copy">Private, secure, and ad-free for both free and paid accounts.</p>
     </div>
     <div class="hero-visual reveal-right">
-      <img src={`${base}/hero-classroom.jpg`} alt="A smiling elementary learner actively collaborating with a teacher using the Litia app on an iPad" class="hero-photo" />
+      <img src={`${base}/winky.png`} alt="A smiling elementary learner actively collaborating with a teacher using the Litia app on an iPad" class="hero-photo" />
     </div>
   </section>
   <div style="text-align: center; margin-top: 200px;">
