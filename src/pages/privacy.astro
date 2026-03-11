@@ -72,7 +72,10 @@ import Layout from "../components/Layout.astro";
       By default, Litia stores data locally on the device. This data is protected by iOS security features (such as the application sandbox and device-level protections).
     </p>
     <p>
-      We use reasonable safeguards designed to reduce risk of unauthorized access. Litia is designed to minimize data collection and exposure by operating offline and only linking accounts (optionally) with Apple and Google due to their existing data protection infrastructure.
+    By default, Litia stores data locally on the device and relies on iOS security protections (sandboxing and device-level controls).
+    Optional cloud sync uses Apple CloudKit when enabled and when account eligibility requirements are met. Litia does not use third-party advertising networks. Litia does not use third-party analytics SDKs. Litia integrates Google Sign-In solely for authentication purposes; when a user signs in with Google, only an account identifier and email address are received. No user data is transmitted to Google beyond the initial authentication handshake.
+    </p><p>
+    Subscription billing is handled entirely by Apple's App Store. Litia does not receive or store payment information of any kind.
     </p>
 
     <h2>8. International Users (EU/UK)</h2>
