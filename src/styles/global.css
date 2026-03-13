@@ -234,6 +234,13 @@ main { padding: 80px 0 120px; }
     calc(var(--size) * 0.5)  calc(var(--size) * -0.1)  0 calc(var(--size) * 0.08) white;
 }
 
+.cloud-1 { width: 220px; height: 121px; top:  8%; animation-duration: 38s; animation-delay:   0s; }
+.cloud-2 { width: 160px; height:  88px; top: 22%; animation-duration: 52s; animation-delay: -14s; }
+.cloud-3 { width: 280px; height: 154px; top: 38%; animation-duration: 44s; animation-delay:  -7s; }
+.cloud-4 { width: 140px; height:  77px; top: 55%; animation-duration: 60s; animation-delay: -22s; }
+.cloud-5 { width: 200px; height: 110px; top: 70%; animation-duration: 48s; animation-delay: -31s; }
+.cloud-6 { width: 170px; height:  94px; top: 85%; animation-duration: 42s; animation-delay: -18s; }
+
 @keyframes cloudDrift {
   from { transform: translateX(0); }
   to   { transform: translateX(calc(100vw + 400px)); }
