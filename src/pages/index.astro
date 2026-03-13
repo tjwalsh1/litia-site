@@ -92,8 +92,45 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
       </div>
       <p class="micro-copy">Private, secure, and ad-free for both free and paid accounts.</p>
     </div>
-    <div class="hero-visual reveal-right">
-      <img src={`${base}/Winky.png`} alt="A smiling elementary learner actively collaborating with a teacher using the Litia app on an iPad" class="hero-photo" />
+    <div class="scroll-sticky-viewport">
+      <div class="scroll-horizontal-track" id="scroll-track">
+        
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/home-screen.png`} alt="Litia Home Screen" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Learning Activities</div>
+          </div>
+        </div>
+
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/quiz-screen.png`} alt="Litia Quiz Interaction" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Eye-Tracked Quizzes</div>
+          </div>
+        </div>
+
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/writing-screen.png`} alt="Litia Creative Drawing" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Learning to Write</div>
+          </div>
+        </div>
+
+        <div class="scroll-slide">
+          <div class="card screenshot-card">
+            <div class="screenshot-img-wrapper">
+              <img src={`${base}/drawing-screen.png`} alt="Litia Creative Drawing" class="screenshot-img" />
+            </div>
+            <div class="screenshot-caption">Space to Create</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <div style="text-align: center; margin-top: 200px;">
