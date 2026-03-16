@@ -170,7 +170,9 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
       <div class="card bg-red reveal-up">
         <h3>Educators</h3>
         <p>Try Litia for free on your own personal device to learn about our software. If you have feedback or want to connect us with your administration, please reach out!</p>
-        <a href={`${base}/contact/`} class="button" style="margin-top: 24px;">Try Litia on your personal device by downloading on the App Store</a>
+          <a href="https://apps.apple.com/us/app/litia/id6760125611" target="_blank" rel="noopener noreferrer" class="app-store-badge">
+            <img src="app-store.svg" alt="Download on the App Store" style="height: 44px; width: auto; border-radius: 8px;" />
+          </a>        
       </div>
       <div class="card bg-green reveal-up"; style="transition-delay: 0.1s;">
         <h3>Administrators</h3>
@@ -202,7 +204,6 @@ const base = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
           const scrollProgress = -rect.top / (rect.height - window.innerHeight);
           const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
           
-          // Calculate the exact pixel distance to move the track
           const maxScroll = track.scrollWidth - window.innerWidth;
           const translateX = clampedProgress * -maxScroll;
           
